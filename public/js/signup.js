@@ -1,7 +1,3 @@
-
-
-
-// creates a post request that matches the input field to the existing login in the db. then redirects to dashboard
 document.querySelector("#loginForm").addEventListener("submit",e=>{
     e.preventDefault();
     const loginObj = {
@@ -9,7 +5,7 @@ document.querySelector("#loginForm").addEventListener("submit",e=>{
         password:document.querySelector("#loginPassword").value
     }
     console.log(loginObj)
-    fetch("/api/users/login",{
+    fetch("/api/users/",{
         method:"POST",
         body:JSON.stringify(loginObj),
         headers:{
@@ -22,9 +18,4 @@ document.querySelector("#loginForm").addEventListener("submit",e=>{
             alert("trumpet sound")
         }
     })
-})
-//on button click redirect to the signup page
-document.getElementById("signupbutton").addEventListener("click", e=>{
-    e.preventDefault();
-    location.href="/signup"
 })

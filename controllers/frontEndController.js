@@ -23,6 +23,9 @@ router.get("/create",(req,res)=>{
     res.render("create")
 })
 
+router.get("/signup",(req,res)=>{
+    res.render("signup")
+})
 
 router.get("/dashboard",(req,res)=>{
     if(!req.session.userId){
@@ -37,12 +40,8 @@ router.get("/dashboard",(req,res)=>{
         console.log(hbsData)
         res.render("dashboard",hbsData)
     })
-    // res.redirect("/sessions")
 })
 
-router.get("/update",(req,res)=>{
-    res.render("update")
-})
 
 router.get("/logout",(req,res)=>{
     res.render("logout")
