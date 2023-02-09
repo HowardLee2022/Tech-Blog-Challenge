@@ -1,0 +1,17 @@
+
+
+<h1>Dashboard</h1>
+
+
+
+><h1>Welcome back, {{email}}!</h1>
+<h2>My post</h2>
+{{#each Posts}}
+<section class="chirp-box">
+    <a href="/update"><h2>{{title}}</h2></a>
+    <p> {{description}}</p>
+</section>
+{{/each}}
+<button id="dashbutton">Create new Post</button>
+
+<script src="/js/dashboard.js"></script>
