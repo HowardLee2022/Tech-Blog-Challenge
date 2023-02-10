@@ -20,6 +20,7 @@ since the github repo comes with the package.json file all you have to do is typ
 - Clicking on the post will redirect user to another page that user can add comments to.
 
 ## Feature 
+[link to deployed app!](https://hltechblog.herokuapp.com/)
 - Create account
 - Login
 - Logout
