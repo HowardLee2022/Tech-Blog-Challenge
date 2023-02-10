@@ -10,4 +10,7 @@ router.use("/api/posts",postRoutes);
 const frontEndRoutes = require('./frontEndController');
 router.use("/",frontEndRoutes);
 
+const commentRoutes=require("./commentController");
+router.use("/api/comments", commentRoutes);
+
 module.exports = router;

@@ -1,33 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {User,Post} = require('../models');
+const {User} = require('../models');
 const bcrypt = require("bcrypt");
 
-// router.get("/",(req,res)=>{
-//    User.findAll().then(userData=>{
-//     res.json(userData)
-//    }).catch(err=>{
-//     console.log(err);
-//     res.status(500).json({msg:"oh noes!",err})
-//    })
-// })
+
 
 router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out")
 })
-
-
-// router.get("/:id",(req,res)=>{
-//    User.findByPk(req.params.id,{
-//     include:[Chirp]
-//    }).then(userData=>{
-//     res.json(userData)
-//    }).catch(err=>{
-//     console.log(err);
-//     res.status(500).json({msg:"oh noes!",err})
-//    })
-// })
 
 router.post("/",(req,res)=>{
     console.log(req.body);
@@ -43,7 +24,6 @@ router.post("/",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
 
 router.post("/login",(req,res)=>{
    User.findOne({
@@ -67,7 +47,6 @@ router.post("/login",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
 
 
 

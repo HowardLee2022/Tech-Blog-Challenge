@@ -2,7 +2,8 @@
 <h1>{{user.email}}</h1>
 {{#each userdate}}
     <section class="chirp-box">
-    <a href="/api/post/edit/{{this.id}}"> <h1>{{title}}</h1> </a>
+        <section><p>created at {{createdAt}}</p></section>
+    <a href="/view/{{this.id}}"> <h1>{{title}}</h1> </a>
     <p> {{description}}</p>
     <h3>Posted by:{{User.email}}</h3>
 </section>

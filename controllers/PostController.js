@@ -1,22 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const {User,Post} = require('../models');
+const {Post,comment} = require('../models');
 
 router.get("/",(req,res)=>{
-   Post.findAll().then(chirpData=>{
-    res.json(chirpData)
+   Post.findAll().then(postData=>{
+    res.json(postData)
    }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"oh noes!",err})
    })
 })
 
-
 router.get("/:id",(req,res)=>{
    Post.findByPk(req.params.id,{
-    include:[User]
-   }).then(chirpData=>{
-    res.json(chirpData)
+    include:[comment]
+   }).then(postData=>{
+    res.json(postData)
    }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"oh noes!",err})
@@ -32,14 +31,13 @@ router.post("/",(req,res)=>{
     title:req.body.title,
     description:req.body.description,
     UserId:req.session.userId
-   }).then(chirpData=>{
-    res.json(chirpData)
+   }).then(postData=>{
+    res.json(postData)
    }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
 
 router.delete("/:id",(req,res)=>{
    if(!req.session.userId){
@@ -48,9 +46,9 @@ router.delete("/:id",(req,res)=>{
    console.log(req.body);
    Post.findByPk(req.params.id).then(postData=>{
       if(!postData){
-         return res.status(404).json({msg:"no such chirp"})
+         return res.status(404).json({msg:"no such post"})
       } else if(postData.UserId!== req.session.userId){
-         return res.status(403).json({msg:"not your chirp!"})
+         return res.status(403).json({msg:"not your post!"})
       }
       Post.destroy({
        where:{
@@ -68,16 +66,15 @@ router.delete("/:id",(req,res)=>{
    })
 })
 
-
 router.put("/:id",(req,res)=>{
    if(!req.session.userId){
       return res.status(403).json({msg:"login first post"})
    }
    Post.findByPk(req.params.id).then(postData=>{
       if(!postData){
-         return res.status(404).json({msg:"no such chirp"})
+         return res.status(404).json({msg:"no such post"})
       } else if(postData.UserId!== req.session.userId){
-         return res.status(403).json({msg:"not your chirp!"})
+         return res.status(403).json({msg:"not your post!"})
       }
       Post.update({
          title:req.body.title,

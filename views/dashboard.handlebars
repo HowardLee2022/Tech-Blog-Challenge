@@ -1,15 +1,14 @@
 
 
-<h1>Dashboard</h1>
 
 
-
-><h1>Welcome back, {{email}}!</h1>
-<h2>My post</h2>
+<h1>Welcome back, {{email}}!</h1>
+<h2>My Post</h2>
 {{#each Posts}}
 <section class="chirp-box">
-    <a href="/api/post/edit/{{this.id}}"><h2>{{title}}</h2></a>
-    <p> {{description}}</p>
+    <section><p>created at {{createdAt}}</p></section>
+    <a href="/edit/{{this.id}}"><h2>{{title}}</h2></a>
+    <h4> {{description}}</h4>
 </section>
 {{/each}}
 <button id="dashbutton">Create new Post</button>

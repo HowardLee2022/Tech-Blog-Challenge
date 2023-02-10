@@ -1,0 +1,24 @@
+<h1>Hello</h1>
+<section>
+    <h1>{{post.title}}</h1>
+    <h2>{{post.description}}</h2>
+</section>
+
+
+{{#each post.comments}}
+<section class="chirp-box">
+<p>{{comment}}</p>
+<p>created by {{User.email}}</p>
+
+</section>
+{{/each}}
+
+<section>
+<form id="new-blogpost">
+<h1>add comment</h1>
+<textarea id="comment-input"></textarea>
+<button id="addcomment">Add comment</button>
+</form>
+</section>
+
+<script src="/js/comment.js"></script>
