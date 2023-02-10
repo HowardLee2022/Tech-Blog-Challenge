@@ -4,14 +4,13 @@ const {User} = require('../models');
 const bcrypt = require("bcrypt");
 
 
-
+// logs out by destroying session
 router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out")
 })
-
+// creates a new account and then login as created account
 router.post("/",(req,res)=>{
-    console.log(req.body);
    User.create({
     email:req.body.email,
     password:req.body.password
@@ -24,7 +23,7 @@ router.post("/",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
+//login by matching the login detail to a existing user in db
 router.post("/login",(req,res)=>{
    User.findOne({
    where:{

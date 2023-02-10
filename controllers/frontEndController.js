@@ -8,8 +8,6 @@ router.get("/",(req,res)=>{
         include:[User]
     }).then(userdata=>{
         const hbsData = userdata.map(user=>user.toJSON());
-        console.log('==============================')
-        console.log(hbsData);
         res.render("home",{
             userdate:hbsData})
     })
@@ -36,8 +34,6 @@ router.get("/dashboard",(req,res)=>{
     }).then(userdata=>{
         console.log(userdata)
         const hbsData = userdata.toJSON();
-        console.log('==============================')
-        console.log(hbsData)
         res.render("dashboard",hbsData)
     })
 })
@@ -66,7 +62,6 @@ router.get('/view/:id', (req, res) => {
             include:[User]
         }]
     }).then(postData=>{
-        console.log(postData.toJSON())
         res.render("view",{
             post:postData.toJSON(),
         })
@@ -75,17 +70,5 @@ router.get('/view/:id', (req, res) => {
         res.status(500).json({msg:"oh noes!",err})
     })
   });
-
-router.get("/hello",(req,res)=>{
-    comment.findAll(
-        {include:[Post,User]}
-    ).then(postData=>{
-     res.json(postData)
-    }).catch(err=>{
-     console.log(err);
-     res.status(500).json({msg:"oh noes!",err})
-    })
- })
- 
 
 module.exports = router;

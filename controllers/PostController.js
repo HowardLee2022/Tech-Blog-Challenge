@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Post,comment} = require('../models');
-
+// gets all post
 router.get("/",(req,res)=>{
    Post.findAll().then(postData=>{
     res.json(postData)
@@ -10,7 +10,7 @@ router.get("/",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
+// gets all post by param
 router.get("/:id",(req,res)=>{
    Post.findByPk(req.params.id,{
     include:[comment]
@@ -21,12 +21,11 @@ router.get("/:id",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
+// creates a post after checking if user is logged in
 router.post("/",(req,res)=>{
    if(!req.session.userId){
       return res.status(403).json({msg:"login first post"})
-   }
-   console.log(req.body);
+   };
    Post.create({
     title:req.body.title,
     description:req.body.description,
@@ -38,12 +37,11 @@ router.post("/",(req,res)=>{
     res.status(500).json({msg:"oh noes!",err})
    })
 })
-
+// deletes a post by checking if user is logged in and if the post userid matches session id
 router.delete("/:id",(req,res)=>{
    if(!req.session.userId){
       return res.status(403).json({msg:"login first post"})
    }
-   console.log(req.body);
    Post.findByPk(req.params.id).then(postData=>{
       if(!postData){
          return res.status(404).json({msg:"no such post"})
@@ -65,7 +63,7 @@ router.delete("/:id",(req,res)=>{
         res.status(500).json({msg:"oh noes!",err})
    })
 })
-
+// updates a existing post by checking if user is logged in and if the post Userid matches session userid
 router.put("/:id",(req,res)=>{
    if(!req.session.userId){
       return res.status(403).json({msg:"login first post"})

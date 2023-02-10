@@ -1,6 +1,4 @@
 
-
-
 // creates a post request that matches the input field to the existing login in the db. then redirects to dashboard
 document.querySelector("#loginForm").addEventListener("submit",e=>{
     e.preventDefault();
@@ -19,7 +17,7 @@ document.querySelector("#loginForm").addEventListener("submit",e=>{
         if(res.ok){
            location.href="/dashboard"
         } else {
-            alert("trumpet sound")
+            alert("error")
         }
     })
 })

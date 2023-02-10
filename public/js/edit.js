@@ -1,8 +1,8 @@
-
+//this is to find the ID 
 const postId = window.location.href.split('/').pop()
 
 
-
+// on button click it will update the post with the value of the text area and input.
 document.getElementById("updatebtn").addEventListener("click",e=>{
     e.preventDefault();
     const loginObj = {
@@ -24,7 +24,7 @@ document.getElementById("updatebtn").addEventListener("click",e=>{
         }
     })
 })
-
+// on button click it will fetch a DELETE request and delete the post 
 document.getElementById("deletebtn").addEventListener("click", e=>{
     e.preventDefault();
     fetch(`/api/posts/${postId}`,{

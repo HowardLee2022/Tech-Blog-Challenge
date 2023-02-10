@@ -1,3 +1,5 @@
+
+// on button click it create a post request then redirect to the dashboard.
 document.querySelector("#loginForm").addEventListener("submit",e=>{
     e.preventDefault();
     const loginObj = {

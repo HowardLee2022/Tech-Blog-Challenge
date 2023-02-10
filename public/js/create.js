@@ -1,3 +1,5 @@
+
+//on submit it will do a POST request to create a new post
 document.querySelector("#new-blogpost").addEventListener("submit",e=>{
     e.preventDefault();
     const blogobj = {
@@ -15,7 +17,7 @@ document.querySelector("#new-blogpost").addEventListener("submit",e=>{
         if(res.ok){
             location.href="/dashboard"
         } else {
-            alert("trumpet sound")
+            alert("error")
         }
     })
 })
